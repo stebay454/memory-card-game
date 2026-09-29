@@ -7,6 +7,7 @@ export default function Board({levelChoosed}){
   const [highScore,setHighScore] = useState({easy: 0,medium: 0,hard: 0});
   const [animeCharacters, setAnimeCharacters] = useState([]);
   const [slicedArray, setSlicedArray] = useState([]);
+  const [choosedCards,setChoosedCards] = useState([]);
   useEffect(()=> {
     const fetchData = async () => {
       try {
@@ -41,11 +42,16 @@ export default function Board({levelChoosed}){
   function shuffle(array){
     return [...array].sort(() => Math.random() - 0.5);
   }
+  function handleCardClick(id){
+   setSlicedArray(shuffle(slicedArray));
+   setChoosedCards([...choosedCards,id]);
+   console.log(choosedCards);
+  }
   return(
     <div>
       <ScoreBoard levelChoosed={levelChoosed}/>
       <div  className="grid grid-cols-4 gap-4 py-4 px-8">
-        {slicedArray.map(card => <Card key={card.id} name={card.name} img={card.imageUrl} />)}
+        {slicedArray.map(card => <Card key={card.id} id={card.id} name={card.name} img={card.imageUrl} onClick={handleCardClick}/>)}
       </div>
     </div>
   );
