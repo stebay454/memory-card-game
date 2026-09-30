@@ -3,8 +3,6 @@ import Card from './Card.jsx';
 import ScoreBoard from './ScoreBoard.jsx';
 
 export default function Board({levelChoosed,hasWin}){
-  const [index,setIndex] = useState(0);
-  const [max,setMax] = useState(0);
   const [score,setScore] = useState(0);
   const [highScore,setHighScore] = useState({easy: 0,medium: 0,hard: 0});
   const [animeCharacters, setAnimeCharacters] = useState([]);
@@ -49,21 +47,33 @@ export default function Board({levelChoosed,hasWin}){
     return array;
   }
   function handleCardClick(id){
-  if(choosedCards.length !== slicedArray.length){
-   setSlicedArray(shuffle(slicedArray));
    if(!choosedCards.includes(id)){
     setChoosedCards([...choosedCards,id]);
+    if(choosedCards.length + 1 !== slicedArray.length){
+      setSlicedArray(shuffle([...slicedArray]));
+      const newScore = score + 1;
+      setScore(newScore);
+      handleHighScore(newScore);
+    } else{
+      hasWin('win');
+    }
    } else{
     hasWin('lose');
     console.log("you clicked one image twice");
    }
-  } else{
-    hasWin('win');
-  } 
+  }
+
+  function handleHighScore(newScore){
+    if(newScore > highScore[levelChoosed]){
+     setHighScore((prevHighScore) =>({
+        ...prevHighScore,
+        [levelChoosed]: newScore
+      }));
+    }  
   }
   return(
     <div>
-      <ScoreBoard levelChoosed={levelChoosed} />
+      <ScoreBoard levelChoosed={levelChoosed} scoreSet={score} setHighScoreSet={highScore[levelChoosed]}/>
       <div  className="grid grid-cols-4 gap-4 py-4 px-8">
         {slicedArray.map(card => <Card key={card.id} id={card.id} name={card.name} img={card.imageUrl} onClick={handleCardClick}/>)}
       </div>

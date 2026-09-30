@@ -9,5 +9,5 @@ export default function LoseDisplay(){
             <button className="bg-green-500 transition ease duration-[0.5s] hover:bg-green-400 text-black py-2 px-4 rounded cursor-pointer">Play again</button>
         </div>
         </div>
-    );
+    )
 }

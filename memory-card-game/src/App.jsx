@@ -15,7 +15,7 @@ import ScoreBoard from './components/ScoreBoard.jsx';
     }
    return(
     <div className="w-full min-h-screen py-4 px-8 text-2xl text-center font-fraunces bg-[#000]" id="main-container">
-      {level == '' ? <WelcomePage levelEl={levelChoosed} /> : displayWin()};
+      {level == '' ? <WelcomePage levelEl={levelChoosed} /> : displayWin()}
     </div>
    );
  };
