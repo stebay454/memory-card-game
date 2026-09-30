@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ScoreBoard({levelChoosed, scoreSet, setHighScoreSet}){
+export default function ScoreBoard({levelChoosed, scoreSet, highScoreSet}){
     return(
      <div className="flex items-center justify-around py-4">
         <div className="text-white ml-4">
@@ -8,7 +8,7 @@ export default function ScoreBoard({levelChoosed, scoreSet, setHighScoreSet}){
         </div>
         <div className="text-grey-500 rounded bg-white px-4 py-4">
           <p>Score: {scoreSet}</p>
-          <p>Highest Score: {setHighScoreSet}</p>
+          <p>Highest Score: {highScoreSet}</p>
         </div>
       </div>
     );
