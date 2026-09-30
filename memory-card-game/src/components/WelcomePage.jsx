@@ -3,7 +3,7 @@ export default function WelcomePage({levelEl}){
    levelEl(e.target.name);
   }
   return(
-    <div className="w-full h-screen flex flex-col justify-center items-center text-white">
+    <div className="w-full flex-1 flex flex-col justify-center items-center text-white">
         <span className="text-5xl mb-3">🤲</span>
         <div className="flex flex-col gap-3">
         <p>Hi there!</p>

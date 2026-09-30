@@ -28,7 +28,7 @@ import Board from './components/Board.jsx';
         }  
       }
    return(
-    <div className="w-full min-h-screen py-4 px-8 text-2xl text-center font-fraunces bg-[#000]" id="main-container">
+    <div className="w-full min-h-screen py-4 px-8 text-2xl text-center font-fraunces bg-linear-[100deg] from-[#1a1a1a] to-[#000] flex flex-col" id="main-container">
       {level == '' ? <WelcomePage levelEl={levelChoosed} /> : displayWin()}
     </div>
    );
