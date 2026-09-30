@@ -2,7 +2,7 @@ import { useState, useEffect} from "react";
 import Card from './Card.jsx';
 import ScoreBoard from './ScoreBoard.jsx';
 
-export default function Board({levelChoosed}){
+export default function Board({levelChoosed,hasWin}){
   const [score,setScore] = useState(0);
   const [highScore,setHighScore] = useState({easy: 0,medium: 0,hard: 0});
   const [animeCharacters, setAnimeCharacters] = useState([]);
@@ -44,7 +44,11 @@ export default function Board({levelChoosed}){
   }
   function handleCardClick(id){
    setSlicedArray(shuffle(slicedArray));
-   setChoosedCards([...choosedCards,id]);
+   if(!choosedCards.includes(id)){
+    setChoosedCards([...choosedCards,id]);
+   } else{
+    hasWin(true);
+   }
    console.log(choosedCards);
   }
   return(
