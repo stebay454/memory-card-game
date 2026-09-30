@@ -4,7 +4,7 @@ export default function WelcomePage({levelEl}){
   }
   return(
     <div className="w-full flex-1 flex flex-col justify-center items-center text-white">
-        <span className="text-5xl mb-3">🤲</span>
+        <span className="text-5xl mb-3">😉</span>
         <div className="flex flex-col gap-3">
         <p>Hi there!</p>
         <p>Welcome to memory mind game...</p>
