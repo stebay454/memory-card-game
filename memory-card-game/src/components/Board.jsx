@@ -7,6 +7,7 @@ export default function Board({levelChoosed,hasWin,updateHighScore,highScoreSet}
   const [animeCharacters, setAnimeCharacters] = useState([]);
   const [slicedArray, setSlicedArray] = useState([]);
   const [choosedCards,setChoosedCards] = useState([]);
+  const [loading,setLoading] = useState(true);
   useEffect(()=> {
     const fetchData = async () => {
       try {
@@ -23,6 +24,8 @@ export default function Board({levelChoosed,hasWin,updateHighScore,highScoreSet}
         setAnimeCharacters(fetchedArray);
       } catch(error){
         console.error("Error fetching data: ", error);
+      } finally{
+        setLoading(false);
       }
     }
     fetchData();
@@ -63,6 +66,7 @@ export default function Board({levelChoosed,hasWin,updateHighScore,highScoreSet}
     console.log("you clicked one image twice");
    }
   }
+  if(loading) return <div className="text-white text-center my-auto">😊wait a minute...</div>;
   return(
     <div className="w-full h-screen flex flex-col">
       <ScoreBoard levelChoosed={levelChoosed} scoreSet={score} highScoreSet={highScoreSet}/>
