@@ -64,9 +64,9 @@ export default function Board({levelChoosed,hasWin,updateHighScore,highScoreSet}
    }
   }
   return(
-    <div>
+    <div className="w-full h-screen flex flex-col">
       <ScoreBoard levelChoosed={levelChoosed} scoreSet={score} highScoreSet={highScoreSet}/>
-      <div  className="grid grid-cols-4 gap-4 py-4 px-8">
+      <div  className="grid  max-sm:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 py-8 px-8 my-auto">
         {slicedArray.map(card => <Card key={card.id} id={card.id} name={card.name} img={card.imageUrl} onClick={handleCardClick}/>)}
       </div>
     </div>
